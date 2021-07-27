@@ -1,0 +1,53 @@
+
+package product_details;
+import java.util.*;
+
+class PD{
+    int exdate,barcode;
+    String pname,pdetail;
+    
+void show(int edate,int bcode,String name,String detail){
+this.exdate=edate;
+    this.barcode=bcode;
+    this.pname=name;
+    this.pdetail=detail;
+    System.out.println(this.pname);
+    System.out.println(this.pdetail);
+    System.out.println(this.barcode);
+    System.out.println(this.exdate);
+}
+
+}
+public class Product_Details {
+
+    public static void main(String[] args) {
+        // TODOcode application logic here
+        int a,b,c;
+        String d,e,f;
+        
+        PD pd=new PD();
+        Scanner input=new Scanner(System.in);
+        System.out.println("Now We Will Be Entering The Details We are Asked To Input.");
+        System.out.println("Press 1 To Enter Detail Ann 0 to exit");
+        a=input.nextInt();
+        while(a==1)
+        {
+        System.out.println("Enter Product Name");
+        pd.pname=input.nextLine();
+        System.out.println("Enter Product Deatail");
+        pd.pdetail=input.nextLine();
+        System.out.println("Enter Expiry Date");
+        pd.exdate=input.nextInt();
+        System.out.println("Enter Barcode");
+        pd.barcode=input.nextInt();
+        b=pd.exdate;
+        e=pd.pdetail;
+        d=pd.pname;
+        c=pd.barcode;
+        pd.show(b,c,d,e);
+        }
+        
+        
+    }
+    
+}

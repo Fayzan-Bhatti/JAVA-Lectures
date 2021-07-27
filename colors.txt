@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package colors;
+import java.awt.event.*;
+import java.awt.*;
+public class Colors extends Frame implements ActionListener {
+    Button b1,b2,b3,b4,b5,b6;
+    void m()
+    {
+        b1=new Button("Red");
+        b2=new Button("Green");
+        b3=new Button("Yellow");
+        b4=new Button("Orange");
+        b5=new Button("Cyan");
+        b6=new Button("Pink");
+        b1.setBounds(50,50,50,50);
+        b2.setBounds(120,50,50,50);
+        b3.setBounds(50,100,50,50);
+        b4.setBounds(120,100,50,50);
+        b5.setBounds(50,150,50,50);
+        b6.setBounds(120,150,50,50);
+        add(b1); add(b2);
+        add(b3); add(b4); add(b5); add(b6);
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
+        setVisible(true);
+        setLayout(null);
+        setSize(500,500);
+        
+    }
+    class a1 extends Colors 
+    {
+        TextField t1,t2;
+        Button bt1;
+        void m1()
+        {
+            t1=new TextField();
+            t2=new TextField();
+            bt1=new Button("SignIn");
+            t1.setBounds(50,50,150,20);
+            t2.setBounds(50,100,150,20);
+            bt1.setBounds(50,150,50,50);
+            add(t1); add(t2); add(bt1);
+            setSize(500,400);
+            setVisible(true);
+            setLayout(null);
+        }
+    }
+    public static void main(String[] args) {
+        Colors o=new Colors();
+        o.m();
+        // TODO code application logic here
+    }
+
+    public void actionPerformed(ActionEvent e) {  a1 o3=new a1();
+        if(e.getSource()==b1)
+        {
+            setBackground(Color.RED);
+            o3.m1();
+        }
+        else if(e.getSource()==b2)
+        {
+            setBackground(Color.GREEN);
+        }
+        else if(e.getSource()==b3)
+        {
+            setBackground(Color.YELLOW);
+        }
+        else if(e.getSource()==b4)
+        {
+            setBackground(Color.ORANGE);
+        }
+        else if(e.getSource()==b5)
+        {
+            setBackground(Color.CYAN);
+        }
+    }
+    
+}

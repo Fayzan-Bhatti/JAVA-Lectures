@@ -1,0 +1,103 @@
+package calculator;
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+
+public class Calculator extends JFrame {
+
+    public Calculator(){
+
+        initComponents();
+
+    }
+
+    private void initComponents(){
+
+        JPanel panelScreen = new JPanel(new GridLayout(0,1));
+
+        JTextArea screen = new JTextArea();
+        panelScreen.add(screen);
+
+        JFrame frame = new JFrame("CALCULATOR");
+       
+
+        JPanel panelButtons = new JPanel(new GridLayout(4,4));
+
+        JButton oneButton = new JButton("1");
+        panelButtons.add(oneButton);
+
+        JButton twoButton = new JButton("2");
+        panelButtons.add(twoButton);
+
+        JButton threeButton = new JButton("3");
+        panelButtons.add(threeButton);
+        
+        JButton plusButton = new JButton("+");
+        plusButton.setBackground(Color.green);
+        panelButtons.add(plusButton);
+        
+        JButton fourButton = new JButton("4");
+        panelButtons.add(fourButton);
+
+        JButton fiveButton = new JButton("5");
+        panelButtons.add(fiveButton);
+
+        JButton sixButton = new JButton("6");
+        panelButtons.add(sixButton);
+
+         JButton minusButton = new JButton("-");
+          minusButton.setBackground(Color.yellow); 
+        panelButtons.add(minusButton);
+        
+        JButton sevenButton = new JButton("7");
+        panelButtons.add(sevenButton);
+
+        JButton eightButton = new JButton("8");
+        panelButtons.add(eightButton);
+
+        JButton nineButton = new JButton("9");
+        panelButtons.add(nineButton);
+        
+         JButton equalButton = new JButton("=");
+          equalButton.setBackground(Color.white); 
+        panelButtons.add(equalButton);
+        
+        JButton zeroButton = new JButton("0");
+           panelButtons.add(zeroButton);
+           
+           JButton mulButton = new JButton("*");
+            mulButton.setBackground(Color.orange); 
+        panelButtons.add(mulButton);
+      
+        JButton divButton = new JButton("/");
+         divButton.setBackground(Color.red); 
+        panelButtons.add(divButton);
+        
+        JButton percButton = new JButton("%");
+         percButton.setBackground(Color.blue); 
+        panelButtons.add(percButton);
+    
+        frame.getContentPane().add(panelScreen, BorderLayout.NORTH);
+      ;
+        frame.getContentPane().add(panelButtons, BorderLayout.SOUTH);
+        frame.setBounds(50, 50, 200, 200);
+        frame.setResizable(true);
+       
+        frame.setVisible(true);
+
+
+    }
+
+
+    public static void main(String[] args) {
+
+        new Calculator();
+
+    }
+
+}

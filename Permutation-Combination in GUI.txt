@@ -1,0 +1,230 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
+
+
+
+
+public class PermCombCalc extends JPanel {
+    JButton permButton = new JButton();
+    JButton combButton = new JButton();
+    JButton clearButton = new JButton();
+
+    JTextField npermField = new JTextField();
+    JTextField rperField = new JTextField();
+    JTextField nchooseField = new JTextField();
+    JTextField rchooseField = new JTextField();
+
+    JTextField pAnswerField = new JTextField();
+    JTextField cAnswerField = new JTextField();
+ public PermCombCalc() {
+
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(1000, 700));
+
+        JLabel permLabel = new JLabel("Permutation:");
+        permLabel.setBounds(10, 20, 100, 20);
+        permLabel.setForeground(Color.BLACK);
+        add(permLabel);
+
+        JLabel combLabel = new JLabel("Combination:");
+        combLabel.setBounds(215, 20, 75, 20);
+        combLabel.setForeground(Color.BLACK);
+        add(combLabel);
+
+        // Creating Permutation Button
+        JLabel PnrLabel = new JLabel("P (n,r)");
+        PnrLabel.setForeground(Color.black);
+        permButton.setBounds(10, 115, 100, 25);
+        add(permButton);
+        permButton.add(PnrLabel);
+ // Action Listener for permbutton
+        permButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                permButton.setActionCommand("Perm");
+                permButton.addActionListener(new ButtonListener());
+
+            }
+
+        });
+
+        // Creating combination button
+        JLabel CnrLabel = new JLabel("C(n, r)");
+        CnrLabel.setForeground(Color.black);
+        combButton.setBounds(190, 115, 100, 25);
+        add(combButton);
+        combButton.add(CnrLabel);
+        // ActionListener
+        combButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                combButton.setActionCommand("comb");
+                combButton.addActionListener(new ButtonListener());
+
+
+            }
+        });
+ // Text fields for n and r
+
+        npermField.setBounds(23, 50, 60, 20);
+        add(npermField);
+        nchooseField.setBounds(230, 50, 60, 20);
+        add(nchooseField);
+
+        rperField.setBounds(23, 80, 60, 20);
+        add(rperField);
+        rchooseField.setBounds(230, 80, 60, 20);
+        add(rchooseField);
+
+        // Input fields
+
+        JLabel npLabel = new JLabel("n:");
+        npLabel.setForeground(Color.black);
+        npLabel.setBounds(10, 55, 10, 10);
+        add(npLabel);
+
+        JLabel ncLabel = new JLabel("n:");
+        ncLabel.setForeground(Color.BLACK);
+        ncLabel.setBounds(217, 55, 10, 10);
+        add(ncLabel);
+ JLabel rpLabel = new JLabel("r:");
+        rpLabel.setForeground(Color.BLACK);
+        rpLabel.setBounds(10, 85, 10, 10);
+        add(rpLabel);
+
+        JLabel rcLabel = new JLabel("r:");
+        rcLabel.setForeground(Color.BLACK);
+        rcLabel.setBounds(217, 85, 10, 10);
+        add(rcLabel);
+
+        // Fields for answers
+
+        JLabel pAnswerJLabel = new JLabel("<-Answers->");
+        pAnswerJLabel.setForeground(Color.BLACK);
+        pAnswerJLabel.setBounds(115, 155, 74, 10);
+        add(pAnswerJLabel);
+        pAnswerField.setBounds(10, 150, 100, 20);
+        add(pAnswerField);
+
+
+        cAnswerField.setBounds(190, 150, 100, 20);  // where is this field?!
+        add(cAnswerField);
+// Buttons
+
+        //clearButton.setBounds(10, 210, 110, 25);
+        //add(clearButton);
+
+        //JLabel clearLabel = new JLabel("Clear Fields");
+        //clearLabel.setForeground(Color.BLACK);
+        //clearButton.add(clearLabel);
+        // clearButton.addActionListener(new ActionListener() {
+        // public void actionPerformed(ActionEvent e) {
+        // clearButton.setActionCommand("Clear");
+
+    }
+private class ButtonListener implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("perm")) {
+            // contentPane.setBackground(Color.red);
+            long Pnr = Permutation();
+            if (Pnr != 0) {
+                pAnswerField.setText(Pnr + "");
+            }
+        } else if (e.getActionCommand().equals("comb")) {
+            // contentPane.setBackground(Color.black);
+            long Cnr = Combination();
+            if (Cnr != 0) {
+                cAnswerField.setText(Cnr + "");
+
+            }
+ } else if (e.getActionCommand().equals("Clear")) {
+            // contentPane.setBackground(Color.lightGray);
+            npermField.setText(null);
+            rperField.setText(null);
+            pAnswerField.setText(null);
+            nchooseField.setText(null);
+            rchooseField.setText(null);
+            cAnswerField.setText(null);
+        }
+
+    }
+
+    public long Permutation() {
+        String npString = npermField.getText();
+        String rpString = rperField.getText();
+        int npint = 0;
+        int rpint = 0;
+
+        try {
+            npint = Integer.parseInt(npString);
+            rpint = Integer.parseInt(rpString);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,"ERROR! The values for 'n' and 'r' \n must be positive integers");
+            return 0;
+        }
+        if (npint <= 0 || rpint <= 0) {
+            JOptionPane.showMessageDialog(null,"ERROR! The values for 'n' and 'r' \n must be positive integers");
+            return 0;
+        }
+ if (npint < rpint) {
+            JOptionPane.showMessageDialog(null,"ERROR! The value of 'r' must be less than \n or equal to the value of 'n.'");
+            return 0;
+        }
+
+        long Pnr = 1;
+        int mult = npint;
+        int nmr = (npint - rpint);
+        while (mult > nmr) {
+            Pnr = Pnr * mult;
+            mult--;
+        }
+
+        return Pnr;
+    }
+
+    public long Combination()  {
+        String ncString = nchooseField.getText();
+        String rcString = rchooseField.getText();
+        int ncint = 0;
+        int rcint = 0;
+
+        try {
+            ncint = Integer.parseInt(ncString);
+            rcint = Integer.parseInt(rcString);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,"ERROR! The values for 'n' and 'r' \n must be positive integers");
+            return 0;
+        }
+ if (ncint <= 0 || rcint <= 0) {
+            JOptionPane.showMessageDialog(null,"Error! The values for 'n' and 'r' \n must be positive integers");
+            return 0;
+        }
+        if (ncint < rcint) {
+            JOptionPane.showMessageDialog(null,"ERROR! The value of 'r' must be less than \n or equal to the value of 'n.'");
+            return 0;
+        }
+
+        long nfact = 1;
+        for (int i = 2; i <= ncint; i++) {
+            nfact = nfact * i;
+        }
+        long rfact = 1;
+        for (int i = 2; i <= rcint; i++) {
+            rfact = rfact * i;
+        }
+        long nmr = ncint - rcint;
+        int nmrfact = 1;
+        for (int i = 2; i <= nmr; i++) {
+            nmrfact = nmrfact * i;
+        }
+
+        long Cnr = (nfact / (rfact * nmrfact));
+
+        return Cnr;
+
+    }
+
+}
+}

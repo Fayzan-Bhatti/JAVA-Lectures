@@ -1,0 +1,35 @@
+Simple input and output method
+Statements===>
+if
+if-else
+nested-if 
+multiple if-else-if
+
+For each loop
+while loop
+Do while loop
+
+1.write a java program hat input a table no from the user and also length form the user and find out their table according to its length.
+                    output: 
+                        Enter Table no
+                          2
+                         Enter The length
+                         5
+                        2*1,2*2...2*5
+
+2.Write the program that displays the following output using nested loop 
+         ****
+         *  *
+         *  *        
+         ****
+       
+            *
+           **
+          ***
+         ****
+
+3.write a program that displays the following output using while loop in java
+ 0,2,4,6,8..100
+
+4.write the program that displays the following out using do while loop in java
+ 1,3,5,7...99         

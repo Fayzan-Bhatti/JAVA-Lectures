@@ -1,0 +1,16 @@
+Product class
+product name 
+barcode
+expiry date
+detail
+
+
+
+
+
+Classes + Arrays
+Employee id
+name 
+cninc
+insert()
+show()
